@@ -1,0 +1,213 @@
+@import "../config";
+
+p {
+  color: white;
+  margin-left: 8px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.output-command {
+  height: 15px;
+  width: 100%;
+  overflow: hidden;
+  @include animation-name(command-scroll);
+  @include animation-duration(10ms);
+  @include animation-fill-mode(backwards);
+  @include keyframes(command-scroll) {
+    from { height: 0; }
+    to { height: 15px; }
+  }
+
+  p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.output-command__with-br {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
+  @include animation-name(command-scroll__with-br);
+  @include animation-duration(10ms);
+  @include animation-fill-mode(backwards);
+  @include keyframes(command-scroll__with-br) {
+    from { height: 0; }
+    to { height: 30px; }
+  }
+
+  p {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.input-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 27px;
+  overflow: hidden;
+  @include animation(command-line, 1ms, backwards);
+  @include keyframes(command-line) {
+    from { height: 0; }
+    to { height: 27px; }
+  }
+
+  .input-prompt {
+    color: white;
+    white-space: nowrap;
+    @include animation-name(command-prompt);
+    @include animation-fill-mode(backwards);
+    @include keyframes(command-prompt) {
+      from { width: 0; height: 0; }
+      to { width: 100%; height: 16px; }
+    }
+
+    p {
+      font-weight: 900;
+      font-size: 14px;
+      width: 100%;
+      overflow:hidden;
+      margin-bottom: 0;
+    }
+  }
+
+  .input-command {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    @include animation(command-typewriter, 1.5s, backwards);
+    @include animation(command-typewriter-height, 1ms, backwards);
+
+    p {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+  }
+
+  @include keyframes(command-typewriter) {
+    from { width: 0; }
+    to { width: 80%; }
+  }
+
+  @include keyframes(command-typewriter-height) {
+    from { height: 0; }
+    to { height: 100%; }
+  }
+}
+
+.input-prompt-final {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  @include animation(command-prompt-final, 1ms, backwards);
+  @include keyframes(command-prompt-final) {
+    from { width: 0; height: 0; }
+    to { width: 100%; height: 16px; }
+  }
+
+  p {
+    font-weight: 900;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .input-line {
+    .input-prompt {
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .input-command {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .output-command {
+    @include keyframes(command-scroll) {
+      from { height: 0; }
+      to { height: 18px; }
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .output-command__with-br {
+    @include keyframes(command-scroll__with-br) {
+      from { height: 0; }
+      to { height: 34px; }
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .input-prompt-final {
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .input-line {
+    .input-prompt {
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .input-command {
+      p {
+        font-size: 16px;
+      }
+    }
+
+    @include keyframes(command-prompt) {
+      from { width: 0; height: 0; }
+      to { width: 100%; height: 20px; }
+    }
+  }
+
+  .output-command {
+    height: 22px;
+    @include keyframes(command-scroll) {
+      from { height: 0; }
+      to { height: 22px; }
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+  }
+
+  .output-command__with-br {
+    height: 40px;
+    @include keyframes(command-scroll__with-br) {
+      from { height: 0; }
+      to { height: 40px; }
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .input-prompt-final {
+    height: 26px;
+    p {
+      font-size: 18px;
+    }
+  }
+}
